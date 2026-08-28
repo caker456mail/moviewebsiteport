@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/(.*\\.do)",
+      "destination": "https://moviewebsite-backend-latest.onrender.com/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
