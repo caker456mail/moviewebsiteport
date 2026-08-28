@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  // 저장소 이름으로 base 설정
-  base: '/moviewebsiteport/', 
+  // Vercel 배포를 위해 루트 경로로 변경
+  base: '/', 
 
   plugins: [react()],
   resolve: {
