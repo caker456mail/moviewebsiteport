@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom' // 1. 라우터 불러오기
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import MainPage from './page/MainPage'
 import Movie from './page/movie/page'
@@ -14,14 +14,11 @@ import MovieInfo from './page/movie/info/page';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {/* 3. BrowserRouter 및 Routes 설정 */}
-    <BrowserRouter basename="/moviewebsiteport">
+    {/* basename 속성을 완전히 제거합니다 */}
+    <BrowserRouter>
       <Routes>
-        {/* / 주소 접속 시 MainPage */}
         <Route path="/" element={<MainPage />} />
-
         <Route path="/movie/info/:id" element={<MovieInfo />} />
-        {/* /event 주소 접속 시 EventPage */}
         <Route path="/movie" element={<Movie />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
