@@ -1,4 +1,5 @@
-type LocationData = Record<string, Record<string, string[]>>;
+// 1. LocationData 정의 수정 (지역 -> 구/시 목록)
+export type LocationData = Record<string, string[]>;
 
 export const MOVIES = [
   { id: 1, title: "오디세이", bg: "#1a2a3a", desc: "크리스토퍼 놀란 감독이 선사하는 압도적인 마스터피스", genre: "SF" },
@@ -13,6 +14,7 @@ export const MOVIES = [
   { id: 10, title: "범죄도시 4", bg: "#4a1a1a", desc: "괴물형사 마석도의 액션 빅매치", genre: "액션 / 109분" },
 ];
 
+// 2. CINEMA_LOCATIONS 타입 지정
 export const CINEMA_LOCATIONS: Record<string, LocationData> = {
   CGV: {
     서울: ["강남구", "마포구"],
@@ -31,6 +33,7 @@ export const CINEMA_LOCATIONS: Record<string, LocationData> = {
     "경기/인천": ["성남시 분당구", "남양주시"],
   },
 };
+
 export const CINEMAS = ["CGV", "메가박스", "롯데시네마", "씨네Q"];
 export const TIME_SLOTS = ["10:30", "13:45", "16:30", "19:15", "22:00"];
 export const ROWS = ["A", "B", "C", "D", "E"];

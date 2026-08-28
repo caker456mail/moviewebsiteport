@@ -33,13 +33,16 @@ export default function Movie() {
         console.error("에러 발생:", error);
       }
     };
-    setUsers(JSON.parse(localStorage.getItem("user")));
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      setUsers(JSON.parse(userData));
+    }
     getMovie();
   }, []);
-  useEffect(()=>{
+  useEffect(() => {
     console.log(users);
 
-  },[users])
+  }, [users])
   const truncateText = (str: string | undefined | null, maxLength: number = 10): string => {
     if (!str) return "미정"; // 데이터가 없거나 null/undefined인 경우
     if (str.length <= maxLength) return str;
@@ -75,12 +78,12 @@ export default function Movie() {
 
         </h2>
         {
-          users?.userRole === "ADMIN" ? 
-          (<div style={{ textAlign: "right", margin: "25px 50px 0 0" }}>
-            <Button
-              title="영화추가(관리자전용)"
-              isSelected={true} />
-          </div>) : ""
+          users?.userRole === "ADMIN" ?
+            (<div style={{ textAlign: "right", margin: "25px 50px 0 0" }}>
+              <Button
+                title="영화추가(관리자전용)"
+                isSelected={true} />
+            </div>) : ""
         }
 
       </div>

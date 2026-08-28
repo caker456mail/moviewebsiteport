@@ -8,10 +8,10 @@ export const Button = ({
 }: {    
     title: string;
     isSelected: boolean;
-    onClick: () => void;
+    onClick?: () => void;
     width?: string;
     disable?: boolean;
-    type?:string;
+    type?: "button" | "submit" | "reset";
 }) => {
     return (
         <button

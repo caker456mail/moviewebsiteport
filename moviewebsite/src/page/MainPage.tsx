@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { CinemaNameItem } from "@/feature/CinemaName/Item";
-import { events, EventItem } from "@/hardCordingData/Event";
+import { events } from "@/hardCordingData/Event";
 import Menu from "@/components/Menu";
 import {
-  CINEMAS,
   CINEMA_LOCATIONS,
   TIME_SLOTS,
   ROWS,
@@ -12,12 +11,11 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import Footer from "@/components/Footer";
 
-// TMDB API 설정
-const TMDB_KEY = "56fb86dc71df6fd10f48f977e78a5720";
+// TMDB API 설정 (보안을 위해 환경변수 사용 권장)
+const TMDB_KEY = process.env.NEXT_PUBLIC_TMDB_KEY || "56fb86dc71df6fd10f48f977e78a5720";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 const NO_IMAGE_URL = "https://via.placeholder.com/500x750?text=No+Image";
 
-// 단가 설정
 const PRICE_ADULT = 15000;
 const PRICE_YOUTH = 11000;
 
@@ -32,8 +30,8 @@ interface MovieType {
 }
 
 export default function MainPage() {
-  // 진행 중인 이벤트만 필터링 (isEnded === false)
-  const activeEvents = events.filter((event) => !event.isEnded);
+  // 진행 중인 이벤트 메모이제이션
+  const activeEvents = useMemo(() => events.filter((event) => !event.isEnded), []);
 
   // TMDB API State
   const [nowPlayingMovies, setNowPlayingMovies] = useState<MovieType[]>([]);
@@ -62,19 +60,15 @@ export default function MainPage() {
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
-        // 1. 현재 극장 상영작 (movie/now_playing 사용)
-        // region=KR을 주면 한국 극장 실상영 데이터만 깔끔하게 나옵니다.
-        const nowPlayingRes = await fetch(
-          `https://api.themoviedb.org/3/movie/now_playing?api_key=${TMDB_KEY}&language=ko-KR&page=1&region=KR`
-        );
-        const nowPlayingData = await nowPlayingRes.json();
-        const nowPlayingList = nowPlayingData.results || [];
+        const [nowPlayingRes, upcomingRes] = await Promise.all([
+          fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${TMDB_KEY}&language=ko-KR&page=1&region=KR`),
+          fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_KEY}&language=ko-KR&page=1&region=KR`)
+        ]);
 
-        // 2. 극장 개봉 예정작 (movie/upcoming 사용)
-        const upcomingRes = await fetch(
-          `https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_KEY}&language=ko-KR&page=1&region=KR`
-        );
+        const nowPlayingData = await nowPlayingRes.json();
         const upcomingData = await upcomingRes.json();
+
+        const nowPlayingList = nowPlayingData.results || [];
         const upcomingList = upcomingData.results || [];
 
         setNowPlayingMovies(nowPlayingList);
@@ -91,7 +85,7 @@ export default function MainPage() {
     fetchMovieData();
   }, []);
 
-  // 배너 자동 타이머 (진행 중인 이벤트 데이터 기반 작동)
+  // 배너 자동 타이머
   useEffect(() => {
     if (activeEvents.length === 0) return;
 
@@ -183,7 +177,7 @@ export default function MainPage() {
           fontFamily: "sans-serif",
         }}
       >
-        {/* 1. 메인 배너 Carousel (진행 중인 이벤트 바인딩) */}
+        {/* 1. 메인 배너 Carousel */}
         <section
           style={{
             padding: "30px 40px 0",
@@ -271,7 +265,6 @@ export default function MainPage() {
               </div>
             ))}
 
-            {/* 인디케이터 (오른쪽 하단) */}
             <div
               style={{
                 position: "absolute",
@@ -387,7 +380,7 @@ export default function MainPage() {
                   borderRadius: "2px",
                 }}
               ></span>
-              빠른 예매 (개발 진행중)
+              빠른 예매
             </h2>
           </div>
 
@@ -416,22 +409,14 @@ export default function MainPage() {
                   🍿 1. 영화관 브랜드
                 </h3>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-                  {CinemaNameItem.map((item) => {
-
-                    // 현재 순회 중인 브랜드가 선택된 브랜드인지 확인
-                    const isSelected = selectedCinema === item.name;
-                    if (item.name !== "더보기") {
-                      return (
-                        <Button
-                          key={item.name}
-                          title={item.name}
-                          isSelected={isSelected}
-                          onClick={() => handleCinemaChange(item.name)}
-                        />
-                      );
-                    }
-
-                  })}
+                  {CinemaNameItem.filter((item) => item.name !== "더보기").map((item) => (
+                    <Button
+                      key={item.name}
+                      title={item.name}
+                      isSelected={selectedCinema === item.name}
+                      onClick={() => handleCinemaChange(item.name)}
+                    />
+                  ))}
                 </div>
               </div>
 
@@ -440,17 +425,14 @@ export default function MainPage() {
                   📍 2. 지역 선택
                 </h3>
                 <div style={{ display: "flex", gap: "6px", marginBottom: "8px" }}>
-                  {currentProvinces.map((prov) => {
-                    const isSelected = selectedProvince === prov;
-                    return (
-                      <Button
-                        key={prov}
-                        title={prov}
-                        isSelected={isSelected}
-                        onClick={() => handleProvinceChange(prov)}
-                      />
-                    );
-                  })}
+                  {currentProvinces.map((prov) => (
+                    <Button
+                      key={prov}
+                      title={prov}
+                      isSelected={selectedProvince === prov}
+                      onClick={() => handleProvinceChange(prov)}
+                    />
+                  ))}
                 </div>
 
                 <div
@@ -462,17 +444,14 @@ export default function MainPage() {
                     overflowY: "auto",
                   }}
                 >
-                  {currentDistricts.map((district) => {
-                    const isSelected = selectedDistrict === district;
-                    return (
-                      <Button
-                        key={district}
-                        title={district}
-                        isSelected={isSelected}
-                        onClick={() => handleDistrictChange(district)}
-                      />
-                    );
-                  })}
+                  {currentDistricts.map((district) => (
+                    <Button
+                      key={district}
+                      title={district}
+                      isSelected={selectedDistrict === district}
+                      onClick={() => handleDistrictChange(district)}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -499,20 +478,17 @@ export default function MainPage() {
                   overflowY: "auto",
                 }}
               >
-                {nowPlayingMovies.map((movie) => {
-                  const isSelected = selectedMovie?.id === movie.id;
-                  return (
-                    <Button
-                      key={movie.id}
-                      title={movie.title}
-                      isSelected={isSelected}
-                      onClick={() => {
-                        setSelectedMovie(movie);
-                        setSelectedSeats([]);
-                      }}
-                    />
-                  );
-                })}
+                {nowPlayingMovies.map((movie) => (
+                  <Button
+                    key={movie.id}
+                    title={movie.title}
+                    isSelected={selectedMovie?.id === movie.id}
+                    onClick={() => {
+                      setSelectedMovie(movie);
+                      setSelectedSeats([]);
+                    }}
+                  />
+                ))}
               </div>
             </div>
 
@@ -530,20 +506,17 @@ export default function MainPage() {
                 ⏰ 4. 시간 선택
               </h3>
               <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "8px", marginBottom: "20px" }}>
-                {TIME_SLOTS.map((time) => {
-                  const isSelected = selectedTime === time;
-                  return (
-                    <Button
-                      key={time}
-                      title={time}
-                      isSelected={isSelected}
-                      onClick={() => {
-                        setSelectedTime(time);
-                        setSelectedSeats([]);
-                      }}
-                    />
-                  );
-                })}
+                {TIME_SLOTS.map((time) => (
+                  <Button
+                    key={time}
+                    title={time}
+                    isSelected={selectedTime === time}
+                    onClick={() => {
+                      setSelectedTime(time);
+                      setSelectedSeats([]);
+                    }}
+                  />
+                ))}
               </div>
 
               <h3 style={{ fontSize: "0.95rem", color: "#aaa", marginBottom: "14px" }}>
@@ -796,7 +769,6 @@ export default function MainPage() {
           </div>
         </section>
 
-        {/* 6. 하단 푸터 */}
         <Footer />
       </div>
     </>

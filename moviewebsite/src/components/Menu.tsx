@@ -1,6 +1,6 @@
 import { getMenuItems } from "@/feature/Menu/Item"; // 💡 getMenuItems 함수로 변경
 import { useState, useEffect } from "react";
-import { UserInfo } from "./loginService";
+import { UserInfo } from "@/service/loginUserdata";
 
 export default function Menu() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);

@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL 데이터베이스
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_DB: MovieProjectDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # admin 스키마 자동 생성을 위한 파일 연결
+
+  # 2. Spring Boot 백엔드
+  backend:
+    image: caker456mail/moviewebsite-backend:latest
+    container_name: backend-app
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/MovieProjectDB
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_JPA_PROPERTIES_HIBERNATE_DEFAULT_SCHEMA: admin
+
+volumes:
+  postgres_data:
