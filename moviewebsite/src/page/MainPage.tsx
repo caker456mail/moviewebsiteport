@@ -1,6 +1,6 @@
-"use client";
-
 import { useState, useEffect } from "react";
+import { CinemaNameItem } from "@/feature/CinemaName/Item";
+import { events, EventItem } from "@/hardCordingData/Event";
 import Menu from "@/components/Menu";
 import {
   CINEMAS,
@@ -15,7 +15,6 @@ import Footer from "@/components/Footer";
 // TMDB API 설정
 const TMDB_KEY = "56fb86dc71df6fd10f48f977e78a5720";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-const BACKDROP_BASE_URL = "https://image.tmdb.org/t/p/original";
 const NO_IMAGE_URL = "https://via.placeholder.com/500x750?text=No+Image";
 
 // 단가 설정
@@ -33,8 +32,10 @@ interface MovieType {
 }
 
 export default function MainPage() {
+  // 진행 중인 이벤트만 필터링 (isEnded === false)
+  const activeEvents = events.filter((event) => !event.isEnded);
+
   // TMDB API State
-  const [topMovies, setTopMovies] = useState<MovieType[]>([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState<MovieType[]>([]);
   const [upcomingMovies, setUpcomingMovies] = useState<MovieType[]>([]);
 
@@ -43,7 +44,7 @@ export default function MainPage() {
   const [selectedCinema, setSelectedCinema] = useState("CGV");
   const [selectedProvince, setSelectedProvince] = useState("경기/인천");
   const [selectedDistrict, setSelectedDistrict] = useState("안산시 단원구");
-  
+
   // 선택된 영화 State
   const [selectedMovie, setSelectedMovie] = useState<MovieType | null>(null);
   const [selectedTime, setSelectedTime] = useState(TIME_SLOTS[0]);
@@ -61,27 +62,26 @@ export default function MainPage() {
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
-        // 1. TOP 배너 및 현재 상영작 (Popular Movie API 사용)
-        const popularRes = await fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_KEY}&language=ko-KR&page=1`
+        // 1. 현재 극장 상영작 (movie/now_playing 사용)
+        // region=KR을 주면 한국 극장 실상영 데이터만 깔끔하게 나옵니다.
+        const nowPlayingRes = await fetch(
+          `https://api.themoviedb.org/3/movie/now_playing?api_key=${TMDB_KEY}&language=ko-KR&page=1&region=KR`
         );
-        const popularData = await popularRes.json();
-        const popularList = popularData.results || [];
+        const nowPlayingData = await nowPlayingRes.json();
+        const nowPlayingList = nowPlayingData.results || [];
 
-        // 2. 개봉 예정작 (Upcoming Movie API 사용)
+        // 2. 극장 개봉 예정작 (movie/upcoming 사용)
         const upcomingRes = await fetch(
-          `https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_KEY}&language=ko-KR&page=1`
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_KEY}&language=ko-KR&page=1&region=KR`
         );
         const upcomingData = await upcomingRes.json();
         const upcomingList = upcomingData.results || [];
 
-        setTopMovies(popularList.slice(0, 5)); // 상단 슬라이드 배너 5개
-        setNowPlayingMovies(popularList);
+        setNowPlayingMovies(nowPlayingList);
         setUpcomingMovies(upcomingList);
 
-        // 초기 선택 영화를 첫 번째 인기 영화로 설정
-        if (popularList.length > 0) {
-          setSelectedMovie(popularList[0]);
+        if (nowPlayingList.length > 0) {
+          setSelectedMovie(nowPlayingList[0]);
         }
       } catch (error) {
         console.error("영화 데이터를 가져오는 중 에러 발생:", error);
@@ -91,15 +91,15 @@ export default function MainPage() {
     fetchMovieData();
   }, []);
 
-  // 배너 자동 타이머 (TOP 영화 데이터가 있을 때 작동)
+  // 배너 자동 타이머 (진행 중인 이벤트 데이터 기반 작동)
   useEffect(() => {
-    if (topMovies.length === 0) return;
+    if (activeEvents.length === 0) return;
 
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % topMovies.length);
-    }, 3000);
+      setCurrentSlide((prev) => (prev + 1) % activeEvents.length);
+    }, 4000);
     return () => clearInterval(timer);
-  }, [topMovies]);
+  }, [activeEvents.length]);
 
   // 예매 관련 핸들러들
   const handleCinemaChange = (cinema: string) => {
@@ -183,7 +183,7 @@ export default function MainPage() {
           fontFamily: "sans-serif",
         }}
       >
-        {/* 1. 메인 배너 Carousel (TMDB Top Movies) */}
+        {/* 1. 메인 배너 Carousel (진행 중인 이벤트 바인딩) */}
         <section
           style={{
             padding: "30px 40px 0",
@@ -200,18 +200,16 @@ export default function MainPage() {
               boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
             }}
           >
-            {topMovies.map((movie, index) => (
+            {activeEvents.map((event, index) => (
               <div
-                key={movie.id}
+                key={event.id}
                 style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
                   width: "100%",
                   height: "100%",
-                  backgroundImage: movie.backdrop_path
-                    ? `linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(18, 18, 18, 0.4) 60%, rgba(18, 18, 18, 0.9) 100%), url(${BACKDROP_BASE_URL}${movie.backdrop_path})`
-                    : "linear-gradient(135deg, rgba(229, 9, 20, 0.4) 0%, rgba(18, 18, 18, 0.95) 70%)",
+                  backgroundImage: `linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(18, 18, 18, 0.45) 60%, rgba(18, 18, 18, 0.9) 100%), url(${event.imageUrl})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   display: "flex",
@@ -223,84 +221,67 @@ export default function MainPage() {
                   pointerEvents: currentSlide === index ? "auto" : "none",
                 }}
               >
-                {/* [맨 왼쪽 위] TOP 순위 표시 */}
-                <span
-                  style={{
-                    position: "absolute",
-                    top: "35px",
-                    left: "50px",
-                    backgroundColor: "rgba(229, 9, 20, 0.85)",
-                    color: "#fff",
-                    padding: "6px 16px",
-                    borderRadius: "20px",
-                    fontWeight: "bold",
-                    fontSize: "0.85rem",
-                    letterSpacing: "0.5px",
-                    boxShadow: "0 4px 12px rgba(229, 9, 20, 0.4)",
-                  }}
-                >
-                  🔥 TOP {index + 1} MOVIE
-                </span>
-
-                {/* [중앙 좌측] 영화 제목 및 설명 */}
-                <div style={{ marginTop: "30px", maxWidth: "650px" }}>
+                <div style={{ maxWidth: "680px" }}>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      backgroundColor: "#e50914",
+                      color: "#fff",
+                      fontSize: "0.85rem",
+                      fontWeight: "bold",
+                      padding: "4px 12px",
+                      borderRadius: "4px",
+                      marginBottom: "16px",
+                    }}
+                  >
+                    🎉 {event.category}
+                  </span>
                   <h1
                     style={{
-                      fontSize: "3rem",
+                      fontSize: "2.2rem",
                       fontWeight: "800",
-                      marginBottom: "20px",
-                      lineHeight: "1.2",
+                      marginBottom: "12px",
+                      lineHeight: "1.3",
                       textShadow: "0 4px 15px rgba(0,0,0,0.7)",
                     }}
                   >
-                    {movie.title}
+                    {event.title}
                   </h1>
-
                   <p
                     style={{
-                      color: "#e0e0e0",
-                      fontSize: "1rem",
-                      lineHeight: "1.7",
-                      marginBottom: "20px",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
+                      color: "#ddd",
+                      fontSize: "1.05rem",
+                      lineHeight: "1.6",
+                      marginBottom: "16px",
                       textShadow: "0 2px 8px rgba(0,0,0,0.8)",
                     }}
                   >
-                    {movie.overview || "등록된 상세 줄거리가 없습니다."}
+                    {event.subtitle}
                   </p>
-                </div>
-
-                {/* [왼쪽 맨 아래] 평점 정보 */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "35px",
-                    left: "50px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "6px",
-                    backgroundColor: "rgba(0, 0, 0, 0.6)",
-                    padding: "6px 14px",
-                    borderRadius: "8px",
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
-                    backdropFilter: "blur(4px)",
-                  }}
-                >
-                  <span style={{ fontSize: "0.9rem", color: "#ffcc00" }}>⭐</span>
-                  <span style={{ fontSize: "0.95rem", fontWeight: "bold", color: "#fff" }}>
-                    {movie.vote_average?.toFixed(1) || "0.0"}
-                  </span>
-                  <span style={{ fontSize: "0.8rem", color: "#aaa" }}>/ 10</span>
+                  <p
+                    style={{
+                      color: "#aaa",
+                      fontSize: "0.85rem",
+                      fontWeight: "500",
+                    }}
+                  >
+                    📅 이벤트 기간: {event.period}
+                  </p>
                 </div>
               </div>
             ))}
 
             {/* 인디케이터 (오른쪽 하단) */}
-            <div style={{ position: "absolute", bottom: "35px", right: "50px", display: "flex", gap: "10px" }}>
-              {topMovies.map((_, index) => (
+            <div
+              style={{
+                position: "absolute",
+                bottom: "35px",
+                right: "50px",
+                display: "flex",
+                gap: "10px",
+              }}
+            >
+              {activeEvents.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
@@ -309,7 +290,8 @@ export default function MainPage() {
                     height: "10px",
                     borderRadius: "5px",
                     border: "none",
-                    backgroundColor: currentSlide === index ? "#e50914" : "rgba(255,255,255,0.3)",
+                    backgroundColor:
+                      currentSlide === index ? "#e50914" : "rgba(255,255,255,0.3)",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                   }}
@@ -319,9 +301,8 @@ export default function MainPage() {
           </div>
         </section>
 
-        {/* 2. 빠른 예매 */}
+        {/* 2. 빠른 이동 */}
         <section
-          id="booking"
           style={{
             padding: "60px 40px",
             maxWidth: "1280px",
@@ -347,7 +328,66 @@ export default function MainPage() {
                   borderRadius: "2px",
                 }}
               ></span>
-              빠른 예매
+              빠른 이동
+            </h2>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+              gap: "20px",
+            }}
+          >
+            {CinemaNameItem.map((item) => (
+              <Card
+                key={item.name}
+                center={true}
+                title={item.name}
+                BT={
+                  <Button
+                    width="100%"
+                    title="빠른이동"
+                    isSelected={true}
+                    onClick={() => {
+                      window.location.href = item.href;
+                    }}
+                  />
+                }
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* 3. 빠른 예매 */}
+        <section
+          id="booking"
+          style={{
+            padding: "0 40px 60px",
+            maxWidth: "1280px",
+            margin: "0 auto",
+          }}
+        >
+          <div style={{ marginBottom: "25px" }}>
+            <h2
+              style={{
+                color: "#FFF",
+                fontSize: "1.8rem",
+                fontWeight: "700",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
+              <span
+                style={{
+                  width: "4px",
+                  height: "24px",
+                  backgroundColor: "#e50914",
+                  borderRadius: "2px",
+                }}
+              ></span>
+              빠른 예매 (개발 진행중)
             </h2>
           </div>
 
@@ -375,17 +415,22 @@ export default function MainPage() {
                 <h3 style={{ fontSize: "0.95rem", color: "#aaa", marginBottom: "10px" }}>
                   🍿 1. 영화관 브랜드
                 </h3>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px" }}>
-                  {CINEMAS.map((cinema) => {
-                    const isSelected = selectedCinema === cinema;
-                    return (
-                      <Button
-                        key={cinema}
-                        title={cinema}
-                        isSelected={isSelected}
-                        onClick={() => handleCinemaChange(cinema)}
-                      />
-                    );
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+                  {CinemaNameItem.map((item) => {
+
+                    // 현재 순회 중인 브랜드가 선택된 브랜드인지 확인
+                    const isSelected = selectedCinema === item.name;
+                    if (item.name !== "더보기") {
+                      return (
+                        <Button
+                          key={item.name}
+                          title={item.name}
+                          isSelected={isSelected}
+                          onClick={() => handleCinemaChange(item.name)}
+                        />
+                      );
+                    }
+
                   })}
                 </div>
               </div>
@@ -450,7 +495,7 @@ export default function MainPage() {
                   display: "flex",
                   flexDirection: "column",
                   gap: "8px",
-                  maxHeight: "360px",
+                  maxHeight: "450px",
                   overflowY: "auto",
                 }}
               >
@@ -645,7 +690,7 @@ export default function MainPage() {
           </div>
         </section>
 
-        {/* 3. 현재 상영작 */}
+        {/* 4. 현재 상영작 */}
         <section style={{ padding: "0 40px 60px", maxWidth: "1280px", margin: "0 auto" }}>
           <div style={{ marginBottom: "25px" }}>
             <h2
@@ -700,7 +745,7 @@ export default function MainPage() {
           </div>
         </section>
 
-        {/* 4. 개봉 예정작 */}
+        {/* 5. 개봉 예정작 */}
         <section style={{ padding: "0 40px 60px", maxWidth: "1280px", margin: "0 auto" }}>
           <div style={{ marginBottom: "25px" }}>
             <h2
@@ -751,7 +796,7 @@ export default function MainPage() {
           </div>
         </section>
 
-        {/* 5. 하단 푸터 */}
+        {/* 6. 하단 푸터 */}
         <Footer />
       </div>
     </>

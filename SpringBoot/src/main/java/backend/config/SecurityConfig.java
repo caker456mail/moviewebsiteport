@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .cors(cors -> {}) // 💡 Vite 프록시 및 CORS 연동을 위해 추가
                 .authorizeHttpRequests(auth -> auth
                         // ⭕ 현재 사용 중인 URL들을 허용 목록에 추가
-                        .requestMatchers("/userregister.do", "/userlogin.do").permitAll()
+                        .requestMatchers("/**/*.do").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();

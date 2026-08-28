@@ -17,7 +17,7 @@ public class LoginResponseDto {
     private String username;
     private String phoneNumber;
     private LocalDate birthDate;
-    private String role;
+    private String userRole;
     private String status;
     private String authProvider;
     private OffsetDateTime createdAt;

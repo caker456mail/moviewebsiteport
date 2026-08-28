@@ -29,7 +29,7 @@ public class UserService {
                 .email(dto.getEmail())
                 .passwordHash(encodedPassword)
                 .phoneNumber(dto.getPhone())
-                .role("USER")
+                .userRole("USER")
                 .status("ACTIVE")
                 .authProvider("LOCAL")
                 .build();
@@ -54,7 +54,7 @@ public class UserService {
                 .username(user.getUsername())
                 .phoneNumber(user.getPhoneNumber())
                 .birthDate(user.getBirthDate())
-                .role(user.getRole())
+                .userRole(user.getUserRole())
                 .status(user.getStatus())
                 .authProvider(user.getAuthProvider())
                 .createdAt(user.getCreatedAt())

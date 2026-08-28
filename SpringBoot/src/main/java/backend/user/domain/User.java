@@ -21,7 +21,7 @@ public class User {
     @Column(name = "user_id", updatable = false, nullable = false)
     private UUID userId;
 
-    @Column(nullable = false, unique = true)
+    @Column(name =  "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "password_hash")
@@ -36,10 +36,10 @@ public class User {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @Column(length = 20)
-    private String role; // USER, ADMIN
+    @Column(name = "user_role", length = 20 )
+    private String userRole; // USER, ADMIN
 
-    @Column(length = 20)
+    @Column(name = "status", length = 20)
     private String status; // ACTIVE, SUSPENDED, DELETED
 
     @Column(name = "auth_provider", length = 20)

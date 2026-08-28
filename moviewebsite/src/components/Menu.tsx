@@ -1,12 +1,14 @@
-import { MenuItem } from "@/feature/Menu/MenuItem";
+import { getMenuItems } from "@/feature/Menu/Item"; // 💡 getMenuItems 함수로 변경
 import { useState, useEffect } from "react";
-import { UserInfo } from "./loginService"; // 💡 UserInfo 타입 임포트 (경로는 맞춰서 수정)
+import { UserInfo } from "./loginService";
 
 export default function Menu() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  // 💡 DB 구조에 맞게 UserInfo 타입 지정
   const [user, setUser] = useState<UserInfo | null>(null);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+
+  // 💡 현재 로그인된 유저의 권한에 맞는 메뉴 목록 가져오기
+  const menuItems = getMenuItems();
 
   // 페이지 진입 시 localStorage에서 사용자 정보 불러오기
   useEffect(() => {
@@ -53,7 +55,8 @@ export default function Menu() {
       </div>
 
       <nav style={{ display: "flex", gap: "30px" }}>
-        {MenuItem.map((item) => (
+        {/* 💡 MenuItem.map -> menuItems.map 으로 수정 */}
+        {menuItems.map((item) => (
           <a
             key={item.id}
             href={item.path}
@@ -83,7 +86,7 @@ export default function Menu() {
                 transition: "all 0.2s ease",
               }}
             >
-              {/* 💡 아바타 (이름의 첫 글자 표시) */}
+              {/* 아바타 (이름의 첫 글자 표시) */}
               <div
                 style={{
                   width: "32px",
@@ -101,7 +104,7 @@ export default function Menu() {
                 {user.username ? user.username.charAt(0).toUpperCase() : "U"}
               </div>
 
-              {/* 💡 DB에서 가져온 사용자 이름 (user.name -> user.username) */}
+              {/* 사용자 이름 */}
               <span style={{ color: "#fff", fontSize: "14px", fontWeight: "500" }}>
                 {user.username} 님
               </span>

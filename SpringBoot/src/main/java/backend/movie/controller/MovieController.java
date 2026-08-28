@@ -1,25 +1,23 @@
-//package backend.movie.controller;
-//
-//import backend.movie.domain.Movie;
-//import backend.movie.repository.MovieRepository;
-//import backend.movie.dto.MovieRequestDto;
-//import org.springframework.web.bind.annotation.*;
-//import java.util.List;
-//
-//@RestController
-//@RequestMapping("/api/movies")
-//@CrossOrigin(origins = "http://localhost:3000") // 리액트 주소 허용 (CORS 해결)
-//public class MovieController {
-//
-//    private final MovieRepository movieRepository;
-//
-//    public MovieController(MovieRepository movieRepository) {
-//        this.movieRepository = movieRepository;
-//    }
-//
-//    @PostMapping("/search")
-//    public List<Movie> searchMovie(@RequestBody MovieRequestDto request) {
-//        // 프론트에서 넘어온 title로 DB 검색 후 결과를 JSON으로 리턴
-//        return movieRepository.findByTitle(request.getTitle());
-//    }
-//}
+package backend.movie.controller;
+
+import backend.movie.domain.Movie;
+import backend.movie.service.MovieService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+@CrossOrigin( origins = "http://localhost:5173", allowedHeaders = "*" )
+public class MovieController {
+    private final MovieService movieService;
+    @GetMapping("/movies.do")
+    public ResponseEntity<List<Movie>> getAllMovies() {
+        List<Movie> movies = movieService.getMovies();
+        return ResponseEntity.ok(movies); // JSON 형태로 프론트에 반환
+    }
+}
