@@ -1,0 +1,599 @@
+CREATE SCHEMA IF NOT EXISTS admin;
+
+
+create table admin.cinema(
+	cinema_name varchar(50),
+	cinema_location varchar(100),
+	cinema_img varchar(255)
+);
+-- 자동 증가 컬럼 추가 및 PK 설정
+ALTER TABLE admin.cinema 
+ADD COLUMN cinema_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY;
+
+
+
+
+
+INSERT INTO admin.cinema (cinema_name, cinema_location, cinema_img) VALUES
+-- 서울특별시
+('cgv', '서울특별시>강남구>강남', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>강남구>압구정', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>강남구>압구정 씨네드쉐프', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>강남구>청담씨네시티', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>강동구>고덕강일', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>강동구>천호', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>강북구>미아', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>강북구>수유', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>강서구>등촌', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>광진구>강변', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>광진구>건대입구', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>구로구>구로', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>노원구>중계', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>도봉구>방학', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>마포구>연남', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>마포구>홍대', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>서대문구>신촌아트레온', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>성동구>왕십리', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>성북구>성신여대입구', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>영등포구>여의도', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>영등포구>영등포(타임스퀘어)', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>용산구>용산아이파크몰', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>용산구>용산 씨네드쉐프', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>은평구>불광', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>종로구>대학로', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>종로구>피카디리1958', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>중구>동대문', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>중구>명동', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '서울특별시>중랑구>상봉', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 경기도
+('cgv', '경기도>고양시>고양백석', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>고양시>고양행신', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>고양시>일산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>고양시>화정', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>과천시>과천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>광명시>광명역', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>광주시>경기광주', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>구리시>구리', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>구리시>구리갈매', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>군포시>산본', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>김포시>김포', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>김포시>김포운양', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>김포시>김포풍무', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>김포시>김포한강', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>남양주시>다산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>남양주시>남양주화도', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>남양주시>별내', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>동두천시>동두천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>부천시>부천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>부천시>부천역', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>부천시>소풍', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>부천시>역곡', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>성남시>야탑', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>성남시>오리', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>성남시>판교', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>성남시>서현', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>수원시>광교', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>수원시>동수원', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>수원시>수원', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>수원시>수원역', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>수원시>북수원', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>수원시>스타필드시티위례', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>시흥시>배곧', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>시흥시>시흥', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>시흥시>시흥은계', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>안산시>안산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>안산시>안산중앙', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>안성시>안성', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>안양시>범계', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>안양시>평촌', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>양주시>옥정', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>오산시>오산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>오산시>오산중앙', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>용인시>광교상현', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>용인시>기흥', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>용인시>동백', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>용인시>수지', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>용인시>용인', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>의정부시>의정부', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>의정부시>의정부태흥', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>이천시>이천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>파주시>파주문산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>파주시>파주야당', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>평택시>평택', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>평택시>평택고덕', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>평택시>평택소사', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>포천시>포천 송우', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>하남시>스타필드시티위례', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>하남시>하남미사', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>화성시>동탄', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>화성시>동탄그랑파사쥬', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>화성시>동탄역', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>화성시>동탄호수공원', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경기도>화성시>봉담', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 인천광역시
+('cgv', '인천광역시>계양구>계양', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>남동구>인천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>남동구>인천논현', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>미추홀구>인천도화', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>미추홀구>인천시민공원', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>미추홀구>인천학익', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>미추홀구>주안역', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>부평구>부평', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>서구>인천가정(루원시티)', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>서구>청라', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>연수구>송도타임스페이스', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '인천광역시>연수구>인천연수', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 강원특별자치도
+('cgv', '강원특별자치도>강릉시>강릉', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '강원특별자치도>원주시>원주', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '강원특별자치도>원주시>원주혁신', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '강원특별자치도>춘천시>춘천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '강원특별자치도>춘천시>춘천명동', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '강원특별자치도>인제군>인제', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '강원특별자치도>인제군>인제원통', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '강원특별자치도>인제군>인제기린', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '강원특별자치도>속초시>속초', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 대전광역시
+('cgv', '대전광역시>동구>대전가오', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대전광역시>동구>대전터미널', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대전광역시>서구>대전', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대전광역시>서구>대전가수원', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대전광역시>서구>대전탄방', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대전광역시>유성구>유성노은', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 세종특별자치시
+('cgv', '세종특별자치시>세종특별자치시>세종', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '세종특별자치시>세종특별자치시>세종나성', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '세종특별자치시>세종특별자치시>세종뽀로로', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 충청북도
+('cgv', '충청북도>청주시>청주(서문)', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청북도>청주시>청주지웰시티', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청북도>청주시>청주터미널', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청북도>청주시>청주율량', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청북도>충주시>충주교현', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청북도>진천·음성군>충북혁신', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청북도>제천시>제천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 충청남도
+('cgv', '충청남도>천안시>천안', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청남도>천안시>천안터미널', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청남도>천안시>천안펜타포트', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청남도>아산시>아산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청남도>논산시>논산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청남도>당진시>당진', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청남도>서산시>서산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청남도>보령시>보령', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '충청남도>홍성군>홍성', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 부산광역시
+('cgv', '부산광역시>금정구>부산대', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>남구>대연', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>동래구>동래', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>동구>부산항', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>부산진구>서면', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>부산진구>서면삼정타워', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>부산진구>서면상상마당', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>북구>화명', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>사상구>사상', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>사하구>하단아트몰링', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>연제구>아시아드', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>영도구>DRIVE IN 영도', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>강서구>부산명지', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>해운대구>센텀시티', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>해운대구>씨네드쉐프 센텀시티', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>해운대구>해운대', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '부산광역시>기장군>정관', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 대구광역시
+('cgv', '대구광역시>중구>대구', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대구광역시>중구>대구한일', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대구광역시>중구>대구현대', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대구광역시>동구>대구신서혁신', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대구광역시>수성구>대구수성', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대구광역시>수성구>대구범어', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대구광역시>수성구>대구스타디움', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대구광역시>달서구>대구월성', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대구광역시>달서구>대구이시아', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '대구광역시>북구>대구연경', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 울산광역시
+('cgv', '울산광역시>남구>울산삼산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '울산광역시>북구>울산신천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '울산광역시>북구>울산진장', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '울산광역시>동구>울산동구', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 경상북도
+('cgv', '경상북도>포항시>북포항', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상북도>포항시>포항', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상북도>구미시>구미', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상북도>구미시>구미봉곡', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상북도>김천시>김천율곡', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상북도>안동시>안동', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상북도>영천시>영천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 경상남도
+('cgv', '경상남도>창원시>마산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>창원시>창원더시티', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>창원시>창원상남', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>김해시>김해', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>김해시>김해율하', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>김해시>김해장유', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>진주시>진주', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>진주시>진주혁신', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>진주시>진주엠비씨네', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>거제시>거제', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>양산시>양산물금', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>양산시>양산삼호', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>통영시>통영', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '경상남도>고성군>고성', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 광주광역시
+('cgv', '광주광역시>광산구>광주첨단', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '광주광역시>광산구>광주하남', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '광주광역시>동구>광주금남로', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '광주광역시>동구>광주충장로', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '광주광역시>북구>광주용봉', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '광주광역시>서구>광주상무', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 전북특별자치도
+('cgv', '전북특별자치도>전주시>서전주', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전북특별자치도>전주시>전주고사', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전북특별자치도>전주시>전주에코시티', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전북특별자치도>전주시>전주효자', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전북특별자치도>익산시>익산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전북특별자치도>군산시>군산', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전북특별자치도>정읍시>정읍', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 전라남도
+('cgv', '전라남도>목포시>목포', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전라남도>목포시>목포평화광장', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전라남도>여수시>여수웅천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전라남도>순천시>순천', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전라남도>순천시>순천신대', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전라남도>광양시>광양', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전라남도>광양시>광양LF스퀘어', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '전라남도>나주시>나주', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+
+-- 제주특별자치도
+('cgv', '제주특별자치도>제주시>제주', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg'),
+('cgv', '제주특별자치도>제주시>제주노형', '//i.namu.wiki/i/zYu2j8dB1Z9kcyMvG1TFj9RJxUdm-WxL4vKiQqHa2lP1fvMU_ZFMqI6EsYGB856OT-85SKTyEkdO4Pi9YBykFwRoCKUmYE1kQqPXsa8Qpf6AdloQaPJf6vTNJLfydpPulrMet6E_-pn-yqbDxP0MNA.svg');
+
+
+
+INSERT INTO admin.cinema (cinema_name, cinema_location, cinema_img) VALUES
+-- 서울특별시
+('롯데시네마', '서울특별시>금천구>가산디지털', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>강서구>가양', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>강동구>강동', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>광진구>건대입구', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>강서구>김포공항', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>노원구>노원', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>강남구>도곡', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>금천구>독산', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>관악구>서울대입구', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>노원구>수락산', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>강북구>수유', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>동작구>신대방(구로디지털역)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>구로구>신도림', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>관악구>신림', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>중구>에비뉴엘(명동)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>영등포구>영등포', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>용산구>용산', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>송파구>월드타워', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>은평구>은평(롯데몰)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>중랑구>중랑', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>동대문구>청량리', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>마포구>합정', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '서울특별시>마포구>홍대입구', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 경기도
+('롯데시네마', '경기도>수원시>광교', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>광명시>광명(광명사거리)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>광명시>광명아울렛', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>구리시>구리아울렛', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>화성시>동탄', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>고양시>라페스타', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>남양주시>별내', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>화성시>병점', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>부천시>부천(신중동역)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>수원시>북수원(천천동)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>군포시>산본피트인', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>수원시>서수원', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>성남시>성남중앙(신흥역)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>안산시>센트럴락', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>평택시>송탄', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>수원시>수원(수원역)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>용인시>수지', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>시흥시>시화(정왕역)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>시흥시>시흥장현', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>안산시>안산', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>안산시>안산고잔', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>안성시>안성', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>안양시>안양일번가', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>용인시>용인기흥', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>용인시>용인역북', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>성남시>위례', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>의정부시>의정부민락', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>안양시>인덕원', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>남양주시>진접', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>파주시>파주롯데아울렛', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>파주시>파주야당', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>파주시>파주운정', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>성남시>판교(창조경제밸리)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>안양시>평촌(범계역)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>하남시>하남미사', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경기도>화성시>향남', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 인천광역시
+('롯데시네마', '인천광역시>부평구>부평', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '인천광역시>부평구>부평갈산', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '인천광역시>부평구>부평역사', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '인천광역시>서구>인천아시아드', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '인천광역시>미추홀구>인천터미널', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 강원특별자치도
+('롯데시네마', '강원특별자치도>강릉시>강릉', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '강원특별자치도>원주시>남원주', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '강원특별자치도>동해시>동해', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '강원특별자치도>원주시>원주무실', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '강원특별자치도>춘천시>춘천', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 대전광역시
+('롯데시네마', '대전광역시>서구>대전(백화점)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '대전광역시>서구>대전관저', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '대전광역시>서구>대전센트럴', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 충청북도
+('롯데시네마', '충청북도>청주시>서청주(아울렛)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '충청북도>청주시>오송', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '충청북도>청주시>청주용암', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '충청북도>충주시>충주(모다아울렛)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 충청남도
+('롯데시네마', '충청남도>당진시>당진', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '충청남도>아산시>아산터미널', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '충청남도>서산시>서산', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '충청남도>천안시>천안불당', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '충청남도>천안시>천안청당', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 부산광역시
+('롯데시네마', '부산광역시>중구>광복', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '부산광역시>동래구>동래', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '부산광역시>기장군>동부산아울렛', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '부산광역시>강서구>부산명지', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '부산광역시>부산진구>부산본점', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '부산광역시>사하구>부산장림', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '부산광역시>해운대구>센텀시티', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '부산광역시>금정구>오투(부산대)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '부산광역시>해운대구>프리미엄해운대(장산역)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 대구광역시
+('롯데시네마', '대구광역시>서구>대구광장', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '대구광역시>동구>대구율하', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '대구광역시>달성군>대구현풍', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '대구광역시>중구>동성로', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '대구광역시>달서구>상인', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '대구광역시>달서구>성서', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '대구광역시>북구>프리미엄칠곡', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 울산광역시
+('롯데시네마', '울산광역시>남구>울산(백화점)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '울산광역시>중구>울산성남', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 경상북도
+('롯데시네마', '경상북도>경주시>경주황성', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상북도>구미시>구미공단', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상북도>상주시>상주', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상북도>영주시>영주', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상북도>영천시>영천', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상북도>포항시>포항', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상북도>구미시>프리미엄구미센트럴', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상북도>안동시>프리미엄안동', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 경상남도
+('롯데시네마', '경상남도>거창군>거창', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>김해시>김해부원', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>김해시>김해아울렛(장유)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>창원시>마산(합성동)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>사천시>사천', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>양산시>양산물금', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>진주시>엠비씨네(진주)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>진주시>진주혁신(롯데몰)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>창원시>진해', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>창원시>창원', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>통영시>통영', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '경상남도>창원시>프리미엄경남대', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 광주광역시
+('롯데시네마', '광주광역시>동구>광주(백화점)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '광주광역시>광산구>광주광산', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '광주광역시>광산구>광주첨단', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '광주광역시>광산구>수완(아울렛)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '광주광역시>동구>충장로', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 전북특별자치도
+('롯데시네마', '전북특별자치도>군산시>군산나운', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '전북특별자치도>군산시>군산몰', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '전북특별자치도>익산시>익산모현', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '전북특별자치도>전주시>전주(백화점)', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '전북특별자치도>전주시>전주송천', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '전북특별자치도>전주시>전주평화', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+
+-- 제주특별자치도
+('롯데시네마', '제주특별자치도>서귀포시>서귀포', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg'),
+('롯데시네마', '제주특별자치도>제주시>제주연동', '//i.namu.wiki/i/D44--5X7yFDd-6UV3BjCs18aGH_8W6x97rjh3BhSTLJOn1qjnRLVc0HvbVdmk-yjHo9cyH_9ugTlrmWOEtbW0W6fCrNSdDWDMtGuXluYxl8RoH6GBV5xmFrEweBsY-YMiQcX73uOyeUyNbAycpgdsA.svg');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO admin.cinema (cinema_name, cinema_location, cinema_img) VALUES
+-- 서울특별시
+('메가박스', '서울특별시>서초구>강남', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>강남구>강남대로(씨티)', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>강동구>강동', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>광진구>군자', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>동대문구>동대문', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>마포구>마곡', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>양천구>목동', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>서대문구>상암월드컵경기장', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>성동구>성수', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>서초구>센트럴', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>송파구>송파파크하비오', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>강북구>수유', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>서대문구>신촌', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>은평구>은평', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>동작구>이수', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>도봉구>창동', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>강남구>코엑스', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>마포구>홍대', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>강서구>화곡', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '서울특별시>종로구>ARTNINE', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 경기도
+('메가박스', '경기도>고양시>고양스타필드', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>광명시>광명소하', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>광주시>경기광주', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>김포시>김포한강신도시', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>남양주시>남양주현대아울렛스페이스원', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>화성시>동탄', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>고양시>백석벨라시타', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>남양주시>별내', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>부천시>부천스타필드시티', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>성남시>분당', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>수원시>수원AK플라자(수원역)', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>수원시>수원스타필드', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>수원시>수원호매실', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>시흥시>시흥배곧', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>안산시>안산중앙', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>안성시>안성스타필드', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>양주시>양주옥정', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>오산시>오산', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>용인시>용인기흥', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>용인시>용인테크노밸리', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>의정부시>의정부민락', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>고양시>일산', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>고양시>일산킨텍스', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>파주시>파주금촌', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>파주시>파주운정', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>파주시>파주출판도시', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>평택시>평택비전', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경기도>하남시>하남스타필드', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 인천광역시
+('메가박스', '인천광역시>서구>검단', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '인천광역시>연수구>송도(트리플스트리트)', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '인천광역시>중구>영종하늘도시', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '인천광역시>남동구>인천논현', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '인천광역시>서구>청라지젤', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 강원특별자치도
+('메가박스', '강원특별자치도>남원주시>남원주', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '강원특별자치도>속초시>속초', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '강원특별자치도>원주시>원주센트럴', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '강원특별자치도>춘천시>춘천석사', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 대전광역시
+('메가박스', '대전광역시>서구>대전신세계아트앤사이언스', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '대전광역시>유성구>대전유성', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '대전광역시>중구>대전중앙로', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '대전광역시>서구>대전탄방', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '대전광역시>유성구>대전현대아울렛', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 세종특별자치시
+('메가박스', '세종특별자치시>세종특별자치시>세종나성', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '세종특별자치시>세종특별자치시>세종청사', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 충청북도
+('메가박스', '충청북도>제천시>제천', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '충청북도>진천군>진천', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '충청북도>청주시>청주사창', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '충청북도>충주시>충주', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 충청남도
+('메가박스', '충청남도>공주시>공주', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '충청남도>논산시>논산', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '충청남도>천안시>천안', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '충청남도>홍성군>홍성내포', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 부산광역시
+('메가박스', '부산광역시>사상구>덕천', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '부산광역시>강서구>부산명지', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '부산광역시>부산진구>부산극장', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '부산광역시>사상구>사상', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '부산광역시>부산진구>서면', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '부산광역시>기장군>정관', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '부산광역시>해운대구>해운대(장산)', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 대구광역시
+('메가박스', '대구광역시>동구>대구신세계(동대구)', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '대구광역시>동구>대구이시아', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '대구광역시>북구>북대구(칠곡)', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '대구광역시>달서구>프리미엄만경관', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 울산광역시
+('메가박스', '울산광역시>북구>울산신천', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '울산광역시>중구>울산성남', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 경상북도
+('메가박스', '경상북도>경산시>경산하양', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상북도>경주시>경주', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상북도>구미시>구미강동', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상북도>김천시>김천', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상북도>문경시>문경', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상북도>포항시>포항', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 경상남도
+('메가박스', '경상남도>창원시>마산', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상남도>사천시>삼천포', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상남도>양산시>양산증산', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상남도>진주시>진주중안', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상남도>창원시>창원', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '경상남도>창원시>창원내서', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 광주광역시
+('메가박스', '광주광역시>광산구>광주상무', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '광주광역시>광산구>광주하남', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '광주광역시>북구>전대(광주)', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '광주광역시>광산구>첨단', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 전북특별자치도
+('메가박스', '전북특별자치도>군산시>군산', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '전북특별자치도>전주시>전주혁신', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 전라남도
+('메가박스', '전라남도>목포시>목포하당', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '전라남도>여수시>여수웅천', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '전라남도>순천시>순천신대', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+
+-- 제주특별자치도
+('메가박스', '제주특별자치도>제주시>제주삼화', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '제주특별자치도>제주시>제주서귀포', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg'),
+('메가박스', '제주특별자치도>제주시>제주아라', '//i.namu.wiki/i/FXixO-DKy0eSNdCCkoNsME2fi9KZSp-3zQEzcRB5ZQVbWewTWtZm_VcqRLYb1S8vY3pGoUXwCoFt3exdKekp9zgfpquwxNaJHHCE_66aNPkbKEtYraWWDy_Qqqb0qLtq86kliGd7QesDbLVAmCBPxQ.svg');
+
+
+
+
+
+
+select * from admin.cinema;

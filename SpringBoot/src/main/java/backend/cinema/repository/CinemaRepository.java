@@ -1,3 +1,21 @@
+package backend.cinema.repository;
+
+import backend.cinema.domain.Cinema;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
+
+public interface CinemaRepository extends JpaRepository<Cinema,Long> {
+    @Query(value = """
+    
+
+""",nativeQuery = true)
+    List<Cinema> findCinemaname();
+}
+
+
+
 //package backend.cinema.repository;
 //
 //import backend.cinema.domain.CinemaMovie;

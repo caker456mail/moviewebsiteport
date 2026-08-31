@@ -1,3 +1,15 @@
+package backend.cinema.service;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class CinemaService{
+    private final CinemaRepositiory cinemaRepositiory;
+}
+
+
 //package backend.cinema.service;
 //
 //
