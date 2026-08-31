@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import Footer from "@/components/Footer";
+import { CinemaName,CinemaItem } from "@/service/CinemaName";
 
 // TMDB API 설정 (보안을 위해 환경변수 사용 권장)
 const TMDB_KEY = process.env.NEXT_PUBLIC_TMDB_KEY || "56fb86dc71df6fd10f48f977e78a5720";
@@ -55,7 +56,26 @@ export default function MainPage() {
   // 총 관람 인원 및 금액 계산
   const totalPeople = adultCount + youthCount;
   const totalPrice = adultCount * PRICE_ADULT + youthCount * PRICE_YOUTH;
+  const [cinemas, setCinemas] = useState<CinemaItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
+  useEffect(() => {
+    const loadCinemaData = async () => {
+      try {
+        setLoading(true);
+        const data = await CinemaName();
+        if (data) {
+          setCinemas(data);
+        }
+      } catch (error) {
+        console.error("영화관 목록 불러오기 실패:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadCinemaData();
+  }, []); // 마운트 시 1회 실행
   // TMDB API 데이터 패치
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -83,6 +103,7 @@ export default function MainPage() {
     };
 
     fetchMovieData();
+
   }, []);
 
   // 배너 자동 타이머
@@ -409,12 +430,12 @@ export default function MainPage() {
                   🍿 1. 영화관 브랜드
                 </h3>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-                  {CinemaNameItem.filter((item) => item.name !== "더보기").map((item) => (
+                  {cinemas.filter((item) => item.cinema_name !== "더보기").map((item) => (
                     <Button
-                      key={item.name}
-                      title={item.name}
-                      isSelected={selectedCinema === item.name}
-                      onClick={() => handleCinemaChange(item.name)}
+                      key={item.cinema_id}
+                      title={item.cinema_name}
+                      isSelected={selectedCinema === item.cinema_name}
+                      onClick={() => handleCinemaChange(item.cinema_name)}
                     />
                   ))}
                 </div>

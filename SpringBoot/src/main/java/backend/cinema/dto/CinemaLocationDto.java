@@ -1,15 +1,14 @@
 package backend.cinema.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CinemaMovieDto{
-    private Long cinema_id;
+@NoArgsConstructor
+public class CinemaLocationDto {
     private String cinemaName;
-    private String cinemaLocation;
-    private  String cinemaImg;
 }
 
 
