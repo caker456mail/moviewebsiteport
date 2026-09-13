@@ -104,7 +104,6 @@ export default function MovieInfo() {
 
   return (
     <>
-      <Menu />
       <div style={{ backgroundColor: "#0f0f12", color: "#fff", minHeight: "100vh", padding: "40px 20px" }}>
         {/* 영화 상세 정보 */}
         <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", gap: "30px", flexWrap: "wrap" }}>
@@ -222,7 +221,6 @@ export default function MovieInfo() {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 }   

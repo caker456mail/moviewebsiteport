@@ -1,10 +1,19 @@
 import { fetchApi } from "./apiConfig";
 
-
-export const CinemaLocation = async () => {
+export interface CinemaLocation{
+  cinemaName : string;
+  cinemaLocation : string;
+};
+export const CinemaLocation = async (cinemaname:string) => {
   try {
     const response = await fetchApi("/cinemalocation.do",{
-      method:"POST"
+      method:"POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body : JSON.stringify({
+        cinemaName: cinemaname,
+      })
     });
    
     console.log(response, "로케이션");

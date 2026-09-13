@@ -1,4 +1,5 @@
 export const Card = ({
+    backgroundcolor,
     image,
     title,
     genre,
@@ -6,6 +7,7 @@ export const Card = ({
     center,
     TEXTInfo,
 }: {
+    backgroundcolor? : string,
     image?: string,
     title: string,
     genre?: string,
@@ -30,7 +32,7 @@ export const Card = ({
             <div
                 style={{
                     height: "280px",
-                    background: "#2e2e38",
+                    background: backgroundcolor?backgroundcolor:"#2e2e38",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -46,7 +48,7 @@ export const Card = ({
                         style={{
                             width: "100%",
                             height: "100%",
-                            objectFit: "cover",
+                            objectFit: "contain",
                             display: "block",
                         }}
                     />

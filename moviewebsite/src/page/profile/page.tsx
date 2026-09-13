@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/custom/Card";
 
 // 임시 예매 내역 데이터 (실제 서비스에서는 API로 조회)
 const MOCK_BOOKINGS = [
@@ -154,8 +154,6 @@ export default function MyPage() {
 
   return (
     <>
-      <Menu />
-
       <div
         style={{
           backgroundColor: "#0f0f12",
@@ -634,7 +632,6 @@ export default function MyPage() {
           </div>
         </div>
 
-        <Footer />
       </div>
     </>
   );

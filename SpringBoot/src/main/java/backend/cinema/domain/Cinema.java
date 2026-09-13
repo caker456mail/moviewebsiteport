@@ -18,6 +18,8 @@ public class Cinema
     @Column(name = "cinema_location", length = 100)
     private String cinemaLocation;
 
-    @Column(name = "cinema_img",length = 255)
+    @Column(name = "cinema_img",length = 100)
     private  String cinemaImg;
+    @Column(name = "cinema_site",length = 100)
+    private  String cinemaSite;
 }

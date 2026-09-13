@@ -26,8 +26,6 @@ export default function Event() {
 
   return (
     <>
-      <Menu />
-
       <div style={containerStyle}>
         <div style={innerStyle}>
           {/* 헤더 섹션 */}
@@ -195,8 +193,6 @@ export default function Event() {
           </div>
         </div>
       )}
-
-      <Footer />
     </>
   );
 }

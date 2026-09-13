@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"; // 👈 react-router-dom의 Link 사용
 import Menu from "@/components/Menu";
 import Footer from "@/components/Footer";
 import { fetchApi } from "@/service/apiConfig";
-import { Card } from "@/components/ui/Card";
+import { Card } from "@/components/custom/Card";
 import { Button } from "@/components/ui/Button";
 import { UserInfointerface } from "@/service/UserInfo";
 interface moviesinterface {
@@ -51,7 +51,6 @@ export default function Movie() {
   };
   return (
     <>
-      <Menu />
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
         <h2
           style={{
@@ -116,7 +115,6 @@ export default function Movie() {
           </Link>
         ))}
       </div>
-      <Footer />
     </>
   );
 }

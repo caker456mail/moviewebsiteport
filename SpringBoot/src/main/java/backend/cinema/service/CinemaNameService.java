@@ -1,6 +1,7 @@
 package backend.cinema.service;
 
 import backend.cinema.domain.Cinema;
+import backend.cinema.dto.CinemaNameDto;
 import backend.cinema.repository.CinemaNameRepository;
 import backend.movie.domain.Movie;
 import backend.movie.repository.MovieRepository;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CinemaNameService{
     private final CinemaNameRepository cinemanameRepositiory;
-    public List<Cinema> getCinemaName(){
+    public List<CinemaNameDto> getCinemaName(){
         return  cinemanameRepositiory.findCinemanamerepository();
     }
 }

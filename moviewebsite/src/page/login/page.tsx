@@ -1,16 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Menu from "@/components/Menu";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/Button";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "@/service/loginUserdata"; // 💡 로그인 API 서비스 연결
+import { loginUser } from "@/service/loginUserdata";
 
 export default function Login() {
-    const [email, setId] = useState(""); // 💡 email -> email 변수명 변경
+    const [email, setId] = useState("");
     const [password, setPassword] = useState("");
     const nav = useNavigate();
 
-    // 💡 백엔드와 연동하는 비동기 로그인 처리 함수
+    // 💡 발급받으신 REST API 키 적용
+    const REST_API_KEY = "758a5716c21d9bd249cb724a9106650f"; 
+    // ※ 카카오 개발자 콘솔에 등록된 Redirect URI와 정확히 일치해야 합니다.
+    const REDIRECT_URI = "http://localhost:5173/auth/kakao/callback";
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code&prompt=login`;
+
+    // 팝업창에서 보낸 메시지(로그인 결과) 감지
+    useEffect(() => {
+        const handleMessage = (event: MessageEvent) => {
+            if (event.origin !== window.location.origin) return;
+
+            if (event.data?.type === "KAKAO_LOGIN_SUCCESS") {
+                alert("카카오 로그인 성공!");
+                nav("/");
+            }
+        };
+
+        window.addEventListener("message", handleMessage);
+        return () => window.removeEventListener("message", handleMessage);
+    }, [nav]);
+
+    // 팝업창 열기
+    const handleKakaoLogin = () => {
+        const width = 480;
+        const height = 640;
+        const left = window.screenX + (window.outerWidth - width) / 2;
+        const top = window.screenY + (window.outerHeight - height) / 2;
+
+        window.open(
+            KAKAO_AUTH_URL,
+            "KakaoLoginPopup",
+            `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=no`
+        );
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -19,12 +53,10 @@ export default function Login() {
             return;
         }
 
-        // 로그인 API 호출
         const success = await loginUser({ email, password });
-
         if (success) {
             alert("로그인 성공!");
-            nav("/"); // 로그인 성공 시 메인 페이지로 이동
+            nav("/");
         }
     };
 
@@ -34,7 +66,6 @@ export default function Login() {
 
     return (
         <>
-            <Menu />
             <div
                 style={{
                     backgroundColor: "#0f0f12",
@@ -127,10 +158,7 @@ export default function Login() {
 
                             <div style={{ marginTop: "10px" }}>
                                 <div style={{ display: "flex", gap: "10px" }}>
-                                    {/* 💡 로그인 버튼 type="submit" 연결 */}
                                     <Button title="로그인" width="100%" isSelected={true} type="submit" />
-                                    
-                                    {/* 💡 회원가입 버튼 type="button" 지정 */}
                                     <Button
                                         title="회원가입"
                                         width="100%"
@@ -140,10 +168,34 @@ export default function Login() {
                                     />
                                 </div>
                             </div>
+
+                            <div style={{ display: "flex", alignItems: "center", margin: "8px 0" }}>
+                                <div style={{ flex: 1, height: "1px", backgroundColor: "#2e2e36" }} />
+                                <span style={{ padding: "0 10px", fontSize: "0.8rem", color: "#666" }}>또는</span>
+                                <div style={{ flex: 1, height: "1px", backgroundColor: "#2e2e36" }} />
+                            </div>
+
+                            <button
+                                type="button"
+                                onClick={handleKakaoLogin}
+                                style={{
+                                    width: "100%",
+                                    padding: "12px",
+                                    borderRadius: "8px",
+                                    border: "none",
+                                    backgroundColor: "#FEE500",
+                                    color: "#000000",
+                                    fontSize: "0.95rem",
+                                    fontWeight: "600",
+                                    cursor: "pointer",
+                                }}
+                            >
+                                카카오로 로그인
+                            </button>
                         </form>
                     </div>
                 </div>
-                <Footer />
+            
             </div>
         </>
     );

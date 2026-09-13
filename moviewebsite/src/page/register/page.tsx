@@ -42,7 +42,6 @@ export default function Register() {
 
     return (
         <>
-            <Menu />
             <div
                 style={{
                     backgroundColor: "#0f0f12",
@@ -297,7 +296,6 @@ export default function Register() {
                         </form>
                     </div>
                 </div>
-                <Footer />
             </div>
         </>
     );

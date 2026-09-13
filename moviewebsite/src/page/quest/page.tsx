@@ -117,8 +117,6 @@ export default function Quest() {
 
   return (
     <>
-      <Menu />
-
       <div style={containerStyle}>
         <div style={innerStyle}>
           {/* 고객센터 헤더 */}
@@ -340,8 +338,6 @@ export default function Quest() {
           )}
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

@@ -2,6 +2,8 @@ package backend.cinema.controller;
 
 import backend.cinema.domain.Cinema;
 import backend.cinema.dto.CinemaLocationDto;
+import backend.cinema.dto.CinemaLocationResponseDto;
+import backend.cinema.dto.CinemaNameDto;
 import backend.cinema.repository.CinemaNameRepository;
 import backend.cinema.service.CinemaLocationService;
 import backend.cinema.service.CinemaNameService;
@@ -21,14 +23,14 @@ public class CinemaController {
     private final CinemaLocationService cinemaLocationService;
 
     @GetMapping("/cinemalist.do")
-    public ResponseEntity<List<Cinema>> getCinemaNames() {
-        List<Cinema> cinemas = cinemaService.getCinemaName();
+    public ResponseEntity<List<CinemaNameDto>> getCinemaNames() {
+        List<CinemaNameDto> cinemas = cinemaService.getCinemaName();
         return ResponseEntity.ok(cinemas);
     }
     @PostMapping("/cinemalocation.do")
-    public  ResponseEntity<List<Cinema>> getCinemaLocations(@RequestBody CinemaLocationDto requestdto){
+    public ResponseEntity<List<CinemaLocationResponseDto>> getCinemaLocations(@RequestBody CinemaLocationDto requestdto) {
         String cinemaname = requestdto.getCinemaName();
-        List<Cinema> resultList = cinemaLocationService.getCinemaLoctions(cinemaname);
+        List<CinemaLocationResponseDto> resultList = cinemaLocationService.getCinemaLoctions(cinemaname);
         return ResponseEntity.ok(resultList);
     }
 }

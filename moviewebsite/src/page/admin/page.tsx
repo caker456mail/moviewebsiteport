@@ -275,8 +275,6 @@ export default function DetailedAdminPage() {
 
   return (
     <>
-      <Menu />
-
       <div style={containerStyle}>
         <div style={innerContainerStyle}>
           {/* 대시보드 타이틀 */}
@@ -811,8 +809,6 @@ export default function DetailedAdminPage() {
           )}
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

@@ -1,10 +1,10 @@
 import { fetchApi } from "./apiConfig";
 
 export interface CinemaItem {
-  cinema_id: number;
-  cinema_name: string;
-  cinema_location: string;
-  cinema_img?: string;
+  cinemaId: number;
+  cinemaSite: string;
+  cinemaName: string;
+  cinemaImg?: string;
 }
 
 export const CinemaName = async (): Promise<CinemaItem[]> => {
