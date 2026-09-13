@@ -124,25 +124,25 @@ export default function MainPage() {
       fetchLocations(selectedCinema);
     }
   }, [selectedCinema, fetchLocations]);
-useEffect(() => {
-  const handleMessage = (event: MessageEvent) => {
-    // 도메인 출처 검증
-    if (event.origin !== window.location.origin) return;
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      // 도메인 출처 검증
+      if (event.origin !== window.location.origin) return;
 
-    if (event.data?.type === "PAYMENT_SUCCESS") {
-      alert(`결제가 완료되었습니다! (주문번호: ${event.data.orderId})`);
-      
-      // 결제 성공 후속 작업:
-      // 예: 예매 완료 페이지 이동, 좌석 선택 초기화, 메인 새로고침 등
-      window.location.href = "/profile"; // 예매 내역 확인 페이지 등으로 이동
-    } else if (event.data?.type === "PAYMENT_FAIL") {
-      alert(`결제 승인 실패: ${event.data.message}`);
-    }
-  };
+      if (event.data?.type === "PAYMENT_SUCCESS") {
+        alert(`결제가 완료되었습니다! (주문번호: ${event.data.orderId})`);
 
-  window.addEventListener("message", handleMessage);
-  return () => window.removeEventListener("message", handleMessage);
-}, []);
+        // 결제 성공 후속 작업:
+        // 예: 예매 완료 페이지 이동, 좌석 선택 초기화, 메인 새로고침 등
+        window.location.href = "/profile"; // 예매 내역 확인 페이지 등으로 이동
+      } else if (event.data?.type === "PAYMENT_FAIL") {
+        alert(`결제 승인 실패: ${event.data.message}`);
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
   // 4. 위치 데이터 계층 파싱
   const locationTree = useMemo<LocationTree>(() => {
     const rawList = locationCinema[selectedCinema] || [];
@@ -281,9 +281,7 @@ useEffect(() => {
   };
 
   // ✅ 결제 팝업창 열기
-  const handleBooking = (e?: React.MouseEvent) => {
-    if (e) e.preventDefault();
-
+  const handleBooking = () => {
     if (totalPrice <= 0) {
       alert("관람 인원과 좌석을 선택해주세요.");
       return;
@@ -708,7 +706,7 @@ useEffect(() => {
                   title="예매하기"
                   isSelected={stepPermissions.isComplete}
                   width="100%"
-                  onClick={(e) => handleBooking(e)}
+                  onClick={handleBooking}
                 />
               </div>
             </div>

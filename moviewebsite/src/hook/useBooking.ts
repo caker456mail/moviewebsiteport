@@ -2,7 +2,7 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { CinemaLocation, CinemaLocation as CinemaLocationType } from "@/service/CinemaLocation";
 import { validateStepAvailability } from "@/components/custom/CardForm";
-import { MovieType } from "@/types/movie"; // MovieType 인터페이스를 별도 파일로 관리한다고 가정
+import { Movie } from "@/type/movie"; // MovieType 인터페이스를 별도 파일로 관리한다고 가정
 
 export const PRICE_ADULT = 15000;
 export const PRICE_YOUTH = 11000;
@@ -12,7 +12,7 @@ interface BookingState {
   city: string;
   gu: string;
   branch: string;
-  movie: MovieType | null;
+  movie: Movie | null;
   time: string;
   adultCount: number;
   youthCount: number;
