@@ -105,3 +105,160 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+/* 배너 섹션 공통 래퍼: BookingSection과 일치하도록 상/하/좌/우 여백 및 중앙 정렬 */
+.event-banner-section {
+  padding: 40px 40px 60px;
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 슬라이더 박스 */
+.responsive-banner-box {
+  position: relative;
+  height: 460px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* 각 슬라이드 아이템 */
+.responsive-banner-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 50px;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.responsive-banner-item.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 내부 텍스트 콘텐츠 */
+.responsive-banner-content {
+  max-width: 680px;
+  margin: auto 0;
+}
+
+.responsive-banner-badge {
+  display: inline-block;
+  background-color: #e50914;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.responsive-banner-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.responsive-banner-subtitle {
+  color: #ddd;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.responsive-banner-period {
+  color: #aaa;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* 인디케이터 */
+.banner-indicator-group {
+  position: absolute;
+  bottom: 35px;
+  right: 50px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.banner-indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.banner-indicator-dot.active {
+  width: 32px;
+  background-color: #e50914;
+}
+
+/* 📱 태블릿 반응형 (1024px 이하) */
+@media (max-width: 1024px) {
+  .event-banner-section {
+    padding: 30px 20px 40px;
+  }
+
+  .responsive-banner-box {
+    height: 380px;
+  }
+
+  .responsive-banner-item {
+    padding: 0 32px;
+  }
+
+  .responsive-banner-title {
+    font-size: 1.8rem;
+  }
+
+  .banner-indicator-group {
+    bottom: 24px;
+    right: 32px;
+  }
+}
+
+/* 📱 모바일 반응형 (640px 이하) */
+@media (max-width: 640px) {
+  .event-banner-section {
+    padding: 20px 14px 30px;
+  }
+
+  .responsive-banner-box {
+    height: 320px;
+  }
+
+  .responsive-banner-item {
+    padding: 0 20px;
+  }
+
+  .responsive-banner-title {
+    font-size: 1.3rem;
+  }
+
+  .responsive-banner-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .banner-indicator-group {
+    bottom: 20px;
+    right: 20px;
+  }
+}

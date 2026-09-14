@@ -3,3 +3,4 @@
 - npm install axios
 - npm install ag-grid-react ag-grid-community
 - npm install gh-pages --save-dev
+- npm install @tosspayments/payment-widget-sdk

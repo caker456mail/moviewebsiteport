@@ -1,72 +1,57 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { z } from "zod";
 import { FilterMainForm, SelectOption } from "@/feature/FilterConfig";
 
 // ==========================================
-// 1. Zod 순차적 직렬 검증 함수 (앞 단계 미통과 시 무조건 차단)
+// 1. Zod 스키마 (제출 검증 전용)
 // ==========================================
 export const bookingSchema = z
   .object({
-    brand: z.string().min(1, "1. 영화관 브랜드를 선택해주세요."),
-    city: z.string().min(1, "2. 시/도를 선택해주세요."),
-    gu: z.string().min(1, "2. 구/군을 선택해주세요."),
-    branch: z.string().min(1, "2. 상세 지점을 선택해주세요."),
-    movieId: z.string().min(1, "3. 관람할 영화를 선택해주세요."),
-    time: z.string().min(1, "4. 상영 시간을 선택해주세요."),
+    brand: z.string().min(1, "영화관 브랜드를 선택해주세요."),
+    city: z.string().min(1, "시/도를 선택해주세요."),
+    gu: z.string().min(1, "구/군을 선택해주세요."),
+    branch: z.string().min(1, "상세 지점을 선택해주세요."),
+    movieId: z.string().min(1, "관람할 영화를 선택해주세요."),
+    time: z.string().min(1, "상영 시간을 선택해주세요."),
     adultCount: z.number().min(0),
     youthCount: z.number().min(0),
     seats: z.array(z.string()),
   })
   .refine((data) => data.adultCount + data.youthCount > 0, {
-    message: "5. 최소 1명 이상의 관람 인원을 지정해야 합니다.",
+    message: "최소 1명 이상의 관람 인원을 지정해야 합니다.",
     path: ["adultCount"],
   })
   .refine((data) => data.seats.length === data.adultCount + data.youthCount, {
-    message: "6. 선택한 인원수와 좌석 수가 일치해야 합니다.",
+    message: "선택한 인원수와 좌석 수가 일치해야 합니다.",
     path: ["seats"],
   });
 
 export type BookingFormData = z.infer<typeof bookingSchema>;
 
+// UI 활성화 판별 순수 함수
 export const validateStepAvailability = (data: Partial<BookingFormData>) => {
-  // 1단계 통과 여부
-  const step1 = z.string().min(1).safeParse(data.brand).success;
+  const hasStep1 = Boolean(data.brand?.trim());
+  const hasStep2 = hasStep1 && Boolean(data.city?.trim() && data.gu?.trim() && data.branch?.trim());
+  const hasStep3 = hasStep2 && Boolean(data.movieId?.trim());
+  const hasStep4 = hasStep3 && Boolean(data.time?.trim());
 
-  // 2단계 통과 여부: 1단계 완료 AND 지역 3단계 모두 선택
-  const step2 =
-    step1 &&
-    z.string().min(1).safeParse(data.city).success &&
-    z.string().min(1).safeParse(data.gu).success &&
-    z.string().min(1).safeParse(data.branch).success;
-
-  // 3단계 통과 여부: 2단계 완료 AND 영화 선택
-  const step3 = step2 && z.string().min(1).safeParse(data.movieId).success;
-
-  // 4단계 통과 여부: 3단계 완료 AND 시간 선택
-  const step4 = step3 && z.string().min(1).safeParse(data.time).success;
-
-  // 5단계 통과 여부: 4단계 완료 AND 1명 이상 인원 설정
-  const step5 = step4 && (data.adultCount || 0) + (data.youthCount || 0) > 0;
-
-  // 6단계 완료 여부: 5단계 완료 AND 선택 좌석 수 === 인원수
-  const step6 =
-    step5 &&
-    (data.seats?.length || 0) === (data.adultCount || 0) + (data.youthCount || 0) &&
-    (data.seats?.length || 0) > 0;
+  const totalPeople = (data.adultCount || 0) + (data.youthCount || 0);
+  const hasStep5 = hasStep4 && totalPeople > 0;
+  const hasStep6 = hasStep5 && (data.seats?.length || 0) === totalPeople;
 
   return {
     canAccessStep1: true,
-    canAccessStep2: step1, // 1단계 안 끝나면 2단계 비활성화
-    canAccessStep3: step2, // 2단계 안 끝나면 3단계 비활성화
-    canAccessStep4: step3, // 3단계 안 끝나면 4단계 비활성화
-    canAccessStep5: step4, // 4단계 안 끝나면 5단계 비활성화
-    canAccessStep6: step5, // 5단계 안 끝나면 6단계 비활성화
-    isComplete: step6,
+    canAccessStep2: hasStep1,
+    canAccessStep3: hasStep2,
+    canAccessStep4: hasStep3,
+    canAccessStep5: hasStep4,
+    canAccessStep6: hasStep5,
+    isComplete: hasStep6,
   };
 };
 
 // ==========================================
-// 2. 3번 영화 검색용 Combobox
+// 2. 영화 검색용 Combobox
 // ==========================================
 interface MovieSearchSelectProps {
   options: SelectOption[];
@@ -75,38 +60,37 @@ interface MovieSearchSelectProps {
   onSelect?: (val: string) => void;
 }
 
-const MovieSearchSelect = ({
-  options,
-  selectedValue,
-  disabled,
-  onSelect,
-}: MovieSearchSelectProps) => {
-  const selectedItem = options.find((opt) => opt.value === selectedValue);
-  const [query, setQuery] = useState(selectedItem ? selectedItem.label : "");
+const MovieSearchSelect = React.memo(({ options, selectedValue, disabled, onSelect }: MovieSearchSelectProps) => {
+  const selectedItem = useMemo(() => options.find((opt) => opt.value === selectedValue), [options, selectedValue]);
+  const [query, setQuery] = useState(selectedItem?.label ?? "");
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setQuery(selectedItem ? selectedItem.label : "");
+    setQuery(selectedItem?.label ?? "");
   }, [selectedItem]);
 
   const filteredOptions = useMemo(() => {
-    if (!query.trim()) return options;
-    return options.filter((opt) =>
-      opt.label.toLowerCase().includes(query.trim().toLowerCase())
-    );
+    const trimmed = query.trim().toLowerCase();
+    if (!trimmed) return options;
+    return options.filter((opt) => opt.label.toLowerCase().includes(trimmed));
   }, [options, query]);
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+  const handleOutsideClick = useCallback(
+    (e: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setIsOpen(false);
-        if (selectedItem) setQuery(selectedItem.label);
+        setQuery(selectedItem?.label ?? "");
       }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [selectedItem]);
+    },
+    [selectedItem]
+  );
+
+  useEffect(() => {
+    if (!isOpen) return;
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, [isOpen, handleOutsideClick]);
 
   if (disabled) {
     return (
@@ -114,17 +98,7 @@ const MovieSearchSelect = ({
         type="text"
         disabled
         placeholder="이전 단계를 먼저 완료해주세요"
-        style={{
-          width: "100%",
-          padding: "10px 12px",
-          borderRadius: "8px",
-          backgroundColor: "#1c1c22",
-          color: "#555",
-          border: "1px solid #282830",
-          fontSize: "0.85rem",
-          cursor: "not-allowed",
-          boxSizing: "border-box",
-        }}
+        className="cardform-select-common cardform-input-disabled"
       />
     );
   }
@@ -141,24 +115,18 @@ const MovieSearchSelect = ({
             setQuery(e.target.value);
             setIsOpen(true);
           }}
+          onKeyDown={(e) => e.key === "Escape" && setIsOpen(false)}
+          className="cardform-select-common cardform-search-input"
           style={{
-            width: "100%",
-            padding: "10px 32px 10px 12px",
-            borderRadius: "8px",
-            backgroundColor: "#222228",
-            color: "#fff",
-            border: isOpen ? "1px solid #e50914" : "1px solid #33333d",
-            outline: "none",
-            fontSize: "0.85rem",
-            boxSizing: "border-box",
+            borderColor: isOpen ? "#e50914" : "#33333d",
           }}
         />
         <span
           style={{
             position: "absolute",
-            right: "10px",
+            right: "12px",
             color: "#777",
-            fontSize: "0.8rem",
+            fontSize: "0.85rem",
             pointerEvents: "none",
           }}
         >
@@ -167,55 +135,30 @@ const MovieSearchSelect = ({
       </div>
 
       {isOpen && (
-        <ul
-          style={{
-            position: "absolute",
-            top: "calc(100% + 6px)",
-            left: 0,
-            width: "100%",
-            maxHeight: "220px",
-            overflowY: "auto",
-            backgroundColor: "#1c1c22",
-            border: "1px solid #33333d",
-            borderRadius: "8px",
-            boxShadow: "0 10px 24px rgba(0,0,0,0.6)",
-            listStyle: "none",
-            padding: "4px 0",
-            margin: 0,
-            zIndex: 100,
-          }}
-        >
+        <ul className="cardform-dropdown-list">
           {filteredOptions.length > 0 ? (
-            filteredOptions.map((opt) => (
-              <li
-                key={opt.value}
-                onClick={() => {
-                  setQuery(opt.label);
-                  setIsOpen(false);
-                  onSelect?.(opt.value);
-                }}
-                style={{
-                  padding: "8px 12px",
-                  fontSize: "0.85rem",
-                  color: opt.value === selectedValue ? "#e50914" : "#ddd",
-                  fontWeight: opt.value === selectedValue ? "bold" : "normal",
-                  cursor: "pointer",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#2b2b36")}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}
-              >
-                {opt.label}
-              </li>
-            ))
+            filteredOptions.map((opt) => {
+              const isSelected = opt.value === selectedValue;
+              return (
+                <li
+                  key={opt.value}
+                  onClick={() => {
+                    setQuery(opt.label);
+                    setIsOpen(false);
+                    onSelect?.(opt.value);
+                  }}
+                  className="cardform-dropdown-item"
+                  style={{
+                    color: isSelected ? "#e50914" : "#ddd",
+                    fontWeight: isSelected ? "bold" : "normal",
+                  }}
+                >
+                  {opt.label}
+                </li>
+              );
+            })
           ) : (
-            <li
-              style={{
-                padding: "10px 12px",
-                fontSize: "0.8rem",
-                color: "#666",
-                textAlign: "center",
-              }}
-            >
+            <li style={{ padding: "10px 12px", fontSize: "0.8rem", color: "#666", textAlign: "center" }}>
               검색 결과가 없습니다.
             </li>
           )}
@@ -223,10 +166,12 @@ const MovieSearchSelect = ({
       )}
     </div>
   );
-};
+});
+
+MovieSearchSelect.displayName = "MovieSearchSelect";
 
 // ==========================================
-// 3. CardForm 메인 컴포넌트
+// 3. CardForm 메인 컴포넌트 (반응형 적용)
 // ==========================================
 interface CardFormProps {
   filterconfig: FilterMainForm[];
@@ -234,57 +179,132 @@ interface CardFormProps {
 }
 
 export const CardForm = ({ filterconfig, onChange }: CardFormProps) => {
-  const selectStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "10px 12px",
-    borderRadius: "8px",
-    backgroundColor: "#222228",
-    color: "#fff",
-    border: "1px solid #33333d",
-    outline: "none",
-    fontSize: "0.85rem",
-    cursor: "pointer",
-  };
-
   return (
-    <section
-      id="booking-panel"
-      style={{
-        width: "100%",
-        backgroundColor: "#18181c",
-        borderRadius: "16px",
-        border: "1px solid #2a2a30",
-        boxShadow: "0 12px 32px rgba(0,0,0,0.45)",
-        padding: "24px",
-        boxSizing: "border-box",
-      }}
-    >
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.2fr 1.4fr 1.4fr 1fr 1.2fr",
-          gap: "20px",
-          alignItems: "stretch",
-        }}
-      >
+    <section id="booking-panel" className="cardform-panel-wrapper">
+      {/* 📱 5단계 필터 반응형 CSS */}
+      <style>{`
+        .cardform-panel-wrapper {
+          width: 100%;
+          background-color: #18181c;
+          border-radius: 16px;
+          border: 1px solid #2a2a30;
+          box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+          padding: 24px;
+          box-sizing: border-box;
+        }
+
+        /* 데스크톱 기본: 5개 열 가로 분할 */
+        .cardform-grid-layout {
+          display: grid;
+          grid-template-columns: 1.2fr 1.4fr 1.4fr 1fr 1.2fr;
+          gap: 20px;
+          align-items: stretch;
+        }
+
+        .cardform-column {
+          display: flex;
+          flex-direction: column;
+          border-right: 1px solid #282830;
+          padding-right: 20px;
+          transition: opacity 0.2s ease;
+        }
+
+        .cardform-column.last-item {
+          border-right: none;
+          padding-right: 0;
+        }
+
+        /* 공통 input & select 디자인 */
+        .cardform-select-common {
+          width: 100%;
+          padding: 10px 12px;
+          border-radius: 8px;
+          background-color: #222228;
+          color: #fff;
+          border: 1px solid #33333d;
+          outline: none;
+          font-size: 0.85rem;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+
+        .cardform-input-disabled {
+          background-color: #1c1c22;
+          color: #555;
+          border: 1px solid #282830;
+          cursor: not-allowed;
+        }
+
+        .cardform-search-input {
+          padding-right: 32px;
+        }
+
+        .cardform-dropdown-list {
+          position: absolute;
+          top: calc(100% + 6px);
+          left: 0;
+          width: 100%;
+          max-height: 220px;
+          overflow-y: auto;
+          background-color: #1c1c22;
+          border: 1px solid #33333d;
+          border-radius: 8px;
+          box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+          list-style: none;
+          padding: 4px 0;
+          margin: 0;
+          z-index: 100;
+        }
+
+        .cardform-dropdown-item {
+          padding: 8px 12px;
+          font-size: 0.85rem;
+          cursor: pointer;
+          transition: background-color 0.15s ease;
+        }
+
+        .cardform-dropdown-item:hover {
+          background-color: #2b2b36;
+        }
+
+        /* 📱 태블릿 / 모바일 반응형 (1024px 이하 -> 세로 1열 전환) */
+        @media (max-width: 1024px) {
+          .cardform-panel-wrapper {
+            padding: 18px;
+          }
+
+          .cardform-grid-layout {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+
+          .cardform-column {
+            border-right: none;
+            padding-right: 0;
+            border-bottom: 1px solid #282830;
+            padding-bottom: 16px;
+          }
+
+          .cardform-column.last-item {
+            border-bottom: none;
+            padding-bottom: 0;
+          }
+        }
+      `}</style>
+
+      <form onSubmit={(e) => e.preventDefault()} className="cardform-grid-layout">
         {filterconfig.map((item, index) => {
           const isItemDisabled = Boolean(item.disabled);
+          const isLast = index === filterconfig.length - 1;
 
           return (
             <div
               key={item.key}
+              className={`cardform-column ${isLast ? "last-item" : ""}`}
               style={{
-                display: "flex",
-                flexDirection: "column",
-                borderRight:
-                  index !== filterconfig.length - 1 ? "1px solid #282830" : "none",
-                paddingRight:
-                  index !== filterconfig.length - 1 ? "20px" : "0",
                 opacity: isItemDisabled ? 0.3 : 1,
-                pointerEvents: isItemDisabled ? "none" : "auto", // 비활성화 시 클릭 완전 차단
+                pointerEvents: isItemDisabled ? "none" : "auto",
                 userSelect: isItemDisabled ? "none" : "auto",
-                transition: "opacity 0.2s ease",
               }}
             >
               <h3
@@ -292,7 +312,8 @@ export const CardForm = ({ filterconfig, onChange }: CardFormProps) => {
                   fontSize: "0.95rem",
                   color: isItemDisabled ? "#666" : "#e5e5e5",
                   fontWeight: "700",
-                  marginBottom: "16px",
+                  marginBottom: "12px",
+                  margin: "0 0 12px 0",
                 }}
               >
                 {item.name}
@@ -305,14 +326,12 @@ export const CardForm = ({ filterconfig, onChange }: CardFormProps) => {
                     value={item.selectedValue || ""}
                     disabled={isItemDisabled}
                     onChange={(e) => onChange?.(item.key, e.target.value)}
+                    className="cardform-select-common"
                     style={{
-                      ...selectStyle,
                       cursor: isItemDisabled ? "not-allowed" : "pointer",
                     }}
                   >
-                    <option value="">
-                      {isItemDisabled ? "이전 단계 필수" : "선택해주세요"}
-                    </option>
+                    <option value="">{isItemDisabled ? "이전 단계 필수" : "선택해주세요"}</option>
                     {item.options?.map((opt) => (
                       <option key={opt.value} value={opt.value}>
                         {opt.label}
@@ -321,45 +340,47 @@ export const CardForm = ({ filterconfig, onChange }: CardFormProps) => {
                   </select>
                 )}
 
-                {/* 2) 3단계 지역 셀렉트 */}
+                {/* 2) 3단계 지역 그룹 셀렉트 (2. 시/도, 구/군, 지점) */}
                 {item.type === "group-select" && (
-                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                    {item.fields?.map((field) => (
-                      <div key={field.key}>
-                        <span
-                          style={{
-                            fontSize: "0.75rem",
-                            color: isItemDisabled ? "#555" : "#888",
-                            display: "block",
-                            marginBottom: "4px",
-                          }}
-                        >
-                          {field.label}
-                        </span>
-                        <select
-                          value={field.selectedValue || ""}
-                          disabled={isItemDisabled || field.disabled}
-                          onChange={(e) => onChange?.(field.key, e.target.value)}
-                          style={{
-                            ...selectStyle,
-                            opacity: isItemDisabled || field.disabled ? 0.35 : 1,
-                            cursor:
-                              isItemDisabled || field.disabled ? "not-allowed" : "pointer",
-                          }}
-                        >
-                          <option value="">{field.placeholder}</option>
-                          {field.options?.map((opt) => (
-                            <option key={opt.value} value={opt.value}>
-                              {opt.label}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    ))}
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                    {item.fields?.map((field) => {
+                      const isFieldDisabled = isItemDisabled || field.disabled;
+                      return (
+                        <div key={field.key}>
+                          <span
+                            style={{
+                              fontSize: "0.75rem",
+                              color: isFieldDisabled ? "#555" : "#888",
+                              display: "block",
+                              marginBottom: "3px",
+                            }}
+                          >
+                            {field.label}
+                          </span>
+                          <select
+                            value={field.selectedValue || ""}
+                            disabled={isFieldDisabled}
+                            onChange={(e) => onChange?.(field.key, e.target.value)}
+                            className="cardform-select-common"
+                            style={{
+                              opacity: isFieldDisabled ? 0.35 : 1,
+                              cursor: isFieldDisabled ? "not-allowed" : "pointer",
+                            }}
+                          >
+                            <option value="">{field.placeholder}</option>
+                            {field.options?.map((opt) => (
+                              <option key={opt.value} value={opt.value}>
+                                {opt.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
 
-                {/* 3) 영화 검색형 셀렉트 */}
+                {/* 3) 영화 검색형 셀렉트 (3. 영화 선택) */}
                 {item.type === "searchable-select" && (
                   <MovieSearchSelect
                     options={item.options || []}
@@ -369,7 +390,7 @@ export const CardForm = ({ filterconfig, onChange }: CardFormProps) => {
                   />
                 )}
 
-                {/* 4) 5단계 인원수 커스텀 (잠금 상태 시 터치 차단 박스) */}
+                {/* 4) 인원 선택 커스텀 박스 (5. 인원수) */}
                 {item.type === "custom" && (
                   <div
                     style={{
@@ -377,7 +398,7 @@ export const CardForm = ({ filterconfig, onChange }: CardFormProps) => {
                       pointerEvents: isItemDisabled ? "none" : "auto",
                     }}
                   >
-                    {item.render && item.render()}
+                    {item.render?.()}
                   </div>
                 )}
               </div>

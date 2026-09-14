@@ -1,88 +1,116 @@
+import React from "react";
+
 export const Card = ({
-    backgroundcolor,
-    image,
-    title,
-    genre,
-    BT,
-    center,
-    TEXTInfo,
+  backgroundcolor,
+  image,
+  title,
+  genre,
+  BT,
+  center,
+  TEXTInfo,
 }: {
-    backgroundcolor? : string,
-    image?: string,
-    title: string,
-    genre?: string,
-    center?: boolean,
-    TEXTInfo?:React.ReactNode,
-    BT?: React.ReactNode
+  backgroundcolor?: string;
+  image?: string;
+  title: string;
+  genre?: string;
+  center?: boolean;
+  TEXTInfo?: React.ReactNode;
+  BT?: React.ReactNode;
 }) => {
-    return (
-
-
-        <div
+  return (
+    <div
+      style={{
+        backgroundColor: "#18181c",
+        borderRadius: "10px",
+        overflow: "hidden",
+        border: "1px solid #2a2a30",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        height: "100%",
+        boxSizing: "border-box",
+      }}
+    >
+      {/* 
+        최대 높이 150px 고정 + contain
+        - 이미지가 절대 잘리지 않음 (Crop 없음)
+        - 가로/세로 비율 100% 원본 유지 (찌그러짐 없음)
+      */}
+      <div
+        style={{
+          width: "100%",
+          height: "100%", // 👈 최대/고정 높이 150px
+          backgroundColor: backgroundcolor || "#121215",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          padding: "6px",
+          boxSizing: "border-box",
+        }}
+      >
+        {image ? (
+          <img
+            src={image}
+            alt={title}
+            loading="lazy"
             style={{
-                backgroundColor: "#18181c",
-                borderRadius: "12px",
-                overflow: "hidden",
-                border: "1px solid #2a2a30",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
+              maxWidth: "100%",
+              maxHeight: "100%",
+              width: "auto",
+              height: "auto",
+              objectFit: "cover", // 👈 잘림 없이 전체 표시
+              display: "block",
             }}
-        >
-            <div
-                style={{
-                    height: "280px",
-                    background: backgroundcolor?backgroundcolor:"#2e2e38",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#aaa",
-                    fontSize: "0.9rem",
-                }}
+          />
+        ) : (
+          <span style={{ color: "#555", fontSize: "0.75rem" }}>NO IMAGE</span>
+        )}
+      </div>
+
+      <div
+        style={{
+          padding: "12px",
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          justifyContent: "space-between",
+          gap: "8px",
+        }}
+      >
+        <div style={{ textAlign: center ? "center" : "left" }}>
+          <h3
+            style={{
+              fontSize: "0.9rem",
+              fontWeight: "700",
+              color: "#fff",
+              margin: "0 0 4px 0",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+            title={title}
+          >
+            {title}
+          </h3>
+
+          {genre && (
+            <p
+              style={{
+                fontSize: "0.75rem",
+                color: "#aaa",
+                margin: "0 0 6px 0",
+              }}
             >
+              {genre}
+            </p>
+          )}
 
-                {image ? (
-                    <img
-                        src={image}
-                        alt={title}
-                        style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "contain",
-                            display: "block",
-                        }}
-                    />
-                ) : (
-                    <span>NO IMAGE</span>
-                )}
-            </div>
-
-            <div style={{ padding: "16px" }}>
-                <div style={{ 
-                    margin: "auto", justifyItems: center?"center":"left"}}>
-                    <h3
-                        style={{
-                            fontSize: "1.1rem",
-                            margin: "0 0 8px 0",
-                        }}
-                    >
-                        {title}
-                    </h3>
-
-                    <p
-                        style={{
-                            fontSize: "0.85rem",
-                            color: "#aaa",
-                            margin: "0 0 12px 0",
-                        }}
-                    >
-                        {genre}
-                    </p>
-                    {TEXTInfo}
-                </div>
-
-                {BT}
-            </div>
+          {TEXTInfo}
         </div>
-    )
-}
+
+        {BT}
+      </div>
+    </div>
+  );
+};
