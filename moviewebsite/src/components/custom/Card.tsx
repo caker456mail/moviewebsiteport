@@ -57,9 +57,9 @@ export const Card = ({
             style={{
               maxWidth: "100%",
               maxHeight: "100%",
-              width: "auto",
-              height: "auto",
-              objectFit: "cover", // 👈 잘림 없이 전체 표시
+              width: "250px",
+              height: "250px",
+              objectFit: "contain", // 👈 잘림 없이 전체 표시
               display: "block",
             }}
           />

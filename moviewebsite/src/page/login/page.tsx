@@ -22,7 +22,10 @@ export default function Login() {
             if (event.origin !== window.location.origin) return;
 
             if (event.data?.type === "KAKAO_LOGIN_SUCCESS") {
+                console.log(event.data);
                 alert("카카오 로그인 성공!");
+                // {type: 'KAKAO_LOGIN_SUCCESS', 
+                //     code: 'Cl2g-6oszQHWJcuugTYhNsXciRkdiFuMpJ_PMbmqdtjIuo9riB65FwAAAAQKFxZiAAABoKl-BZXHP8VuE1ZNOQ'}
                 nav("/");
             }
         };

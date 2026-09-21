@@ -1,39 +1,72 @@
-// src/pages/KakaoCallback.tsx
+// src/pages/LoginPage.tsx
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export default function KakaoCallback() {
-  const [searchParams] = useSearchParams();
-  const code = searchParams.get("code");
+export default function LoginPage() {
+  const navigate = useNavigate();
 
+  // 1. 카카오 로그인 팝업 열기 함수
+  const handleKakaoLogin = () => {
+    const KAKAO_CLIENT_ID = "YOUR_KAKAO_REST_API_KEY";
+    // 콜백 페이지 주소 (백엔드 application.yml의 kakao.redirect-uri와 완전 일치 필수)
+    const REDIRECT_URI = `${window.location.origin}/oauth/kakao`; 
+    
+    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+    const width = 500;
+    const height = 650;
+    const left = window.screenX + (window.outerWidth - width) / 2;
+    const top = window.screenY + (window.outerHeight - height) / 2;
+
+    window.open(
+      kakaoAuthUrl,
+      "kakaoLoginPopup",
+      `width=${width},height=${height},top=${top},left=${left}`
+    );
+  };
+
+  // 2. 팝업창에서 postMessage 수신 리스너 등록
   useEffect(() => {
-    console.log("[Callback] 수신된 인가 코드:", code);
-    console.log("[Callback] window.opener 존재 여부:", Boolean(window.opener));
+    const handleReceiveMessage = async (event: MessageEvent) => {
+      // 보안을 위해 같은 origin인지 확인
+      if (event.origin !== window.location.origin) return;
 
-    if (!code) return;
+      if (event.data?.type === "KAKAO_LOGIN_SUCCESS") {
+        const authCode = event.data.code;
+        console.log("[Parent] 인가 코드 수신 성공:", authCode);
 
-    try {
-      if (window.opener) {
-        // 부모 창으로 성공 메시지 전달
-        window.opener.postMessage(
-          { type: "KAKAO_LOGIN_SUCCESS", code },
-          window.location.origin
-        );
-        console.log("[Callback] postMessage 전송 완료");
-      } else {
-        console.warn("[Callback] window.opener를 찾을 수 없습니다. (보안 정책 등으로 차단됨)");
+        try {
+          // 백엔드 컨트롤러로 code 전송
+          const res = await axios.post("/api/auth/kakao", { code: authCode });
+          const result = res.data; // KakaoCheckResponseDto
+
+          if (result.registered) {
+            // 이미 가입된 회원 -> 로그인 성공 처리 (메인으로 이동)
+            console.log("로그인 완료:", result.user);
+            navigate("/");
+          } else {
+            // 신규 회원 -> 회원가입 페이지로 이동 (카카오 정보 전달)
+            console.log("회원가입 필요:", result.socialId, result.email);
+            navigate("/register/social", {
+              state: {
+                socialId: result.socialId,
+                email: result.email,
+              },
+            });
+          }
+        } catch (error) {
+          console.error("백엔드 인증 실패:", error);
+          alert("카카오 로그인 처리에 실패했습니다.");
+        }
       }
-    } catch (err) {
-      console.error("[Callback] 메시지 전송 중 에러 발생:", err);
-    } finally {
-      // 메시지 전송 여부와 관계없이 팝업창은 항상 닫히도록 처리
-      window.close();
-    }
-  }, [code]);
+    };
+
+    window.addEventListener("message", handleReceiveMessage);
+    return () => window.removeEventListener("message", handleReceiveMessage);
+  }, [navigate]);
 
   return (
-    <div style={{ color: "#fff", padding: "20px", textAlign: "center", background: "#18181c", height: "100vh" }}>
-      로그인 처리 중입니다. 창이 곧 닫힙니다...
-    </div>
+    <button onClick={handleKakaoLogin}>카카오 로그인</button>
   );
-}
+} 

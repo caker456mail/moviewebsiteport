@@ -7,28 +7,33 @@ import { Card } from "@/components/custom/Card";
 import { Button } from "@/components/ui/Button";
 import { UserInfointerface } from "@/service/UserInfo";
 interface moviesinterface {
-  movieId: number;
-  titleKr: string;
-  titleEn: string;
-  movieYear: number
-  movieLocation: string;
-  movieType: string;
-  movieGenre: string;
-  movieActive: string;
-  movieDirector: string;
-  movieCompany: string;
-  imageUrl: string;
+  backdropPath: string;
+  createdAt: string;
+  id: number;
+  originalTitle: string;
+  overview: string;
+  posterPath: string;
+  releaseDate: string;
+  status: string;
+  title: string;
+  tmdbId: number;
+  updatedAt: string;
+  voteAverage: number;
+  voteCount: number;
 }
+
+
+
 export default function Movie() {
-  // const KEY = "56fb86dc71df6fd10f48f977e78a5720";
+
   const [movies, setMovies] = useState<moviesinterface[]>([]);
   const [users, setUsers] = useState<UserInfointerface | null>(null);
   useEffect(() => {
     const getMovie = async () => {
       try {
         const response = await fetchApi("/movies.do", { method: "GET" })
+        console.log(response);
         setMovies(response as moviesinterface[]);
-
       } catch (error) {
         console.error("에러 발생:", error);
       }
@@ -90,27 +95,16 @@ export default function Movie() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "16px", padding: "20px" }}>
         {movies.map((movie) => (
           <Link
-            key={movie.movieId}
-            to={`/movie/info/${movie.movieId}`}
+            key={movie.id}
+            to={`/movie/info/${movie.tmdbId}`}
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <Card
-              key={movie.movieId}
-              title={truncateText(movie.titleEn ? movie.titleKr + `(${movie.titleEn})` : movie.titleKr, 10)}
-              image={movie.imageUrl}
-              TEXTInfo={
-                <>
-                  <p title={movie.movieGenre}>
-                    장르 : {truncateText(movie.movieGenre, 7)}
-                  </p>
-                  <p title={movie.movieDirector}>
-                    감독 : {truncateText(movie.movieDirector, 5)}
-                  </p>
-                  <p title={movie.movieCompany}>
-                    제작사 : {truncateText(movie.movieCompany, 5)}
-                  </p>
-                </>
-              }
+              key={movie.id}
+              title={truncateText(movie.originalTitle
+                ? movie.title + `(${movie.originalTitle})` : movie.title, 10)}
+              image={`https://image.tmdb.org/t/p/w500${movie.posterPath}`}
+              
             />
           </Link>
         ))}
